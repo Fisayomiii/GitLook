@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Axios from "axios";
-import Userinfo from "./Userinfo";
+import Userinfo from "./profile/Userinfo";
+import Repos from "./profile/repo/Repos";
 
 const Search = () => {
     const [query, setQuery] = useState("");
@@ -17,7 +18,6 @@ const Search = () => {
         }
     };
 
-
     return (
         <>
             <div className="bg">
@@ -28,12 +28,13 @@ const Search = () => {
                             <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit" onClick={fetchDetails}>
                                 Search
                             </button>
-                        </div>
-                        {/* <div className='text-red-500 text-xs italic'>{errmsg}</div> */}
+                        </div><br />
                     </div>
                 </div>
-                {user ? <Userinfo user={user} /> : null}
-
+                {user ? <Userinfo user={user} /> : ""}
+                <center>
+                    {user ? <Repos repos_url={user.repos_url} /> : ""}
+                </center>
             </div>
         </>
     );
