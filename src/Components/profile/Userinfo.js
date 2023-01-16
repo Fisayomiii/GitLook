@@ -1,18 +1,23 @@
 import { Avatar } from '@material-tailwind/react';
 import React from "react"
 
-const Userinfo = ({user}) => {
+const Userinfo = ({ user }) => {
     return (
         <>
             <div className="bg">
                 <div className="bg-slate-300 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 dark:bg-slate-500">
-                    <div className="relative mb-5 mx-auto flex justify-center item-center">
-                        <Avatar src={user.avatar_url} alt={user.name} variant="circular" size="sm" className='object-cover cursor-pointer h-64 w-64 rounded-3xl' />
-                    </div>
+                    {user.avatar_url && (
+                        <div className="relative mb-5 mx-auto flex justify-center item-center">
+                            <Avatar src={user.avatar_url} alt={user.name} variant="circular" size="sm" className='object-cover cursor-pointer h-64 w-64 rounded-3xl' />
+                        </div>
+                    )}
                     <div className="mb-16 md:mb-0 md:max-w-xl sm:mx-auto md:text-center">
-                        <h2 className="mb-5 mt-5 mx-auto text-center text-3xl text-gray-100 text-base tracking-tight font-medium">
-                        {user.name}
-                        </h2>
+
+                        {user.name &&
+                            <h2 className="mb-5 mt-5 mx-auto text-center text-3xl text-gray-100 text-base tracking-tight font-medium">
+                                {user.name}
+                            </h2>
+                        }
                         <h3 className="mb-2 mt-5 mx-auto text-center text-2xl text-green-500 text-base tracking-tight text-sm">
                             <a href={user.html_url} target="_blank" rel="nonopener noreferrer">- @ {user.login}</a>
                         </h3>
